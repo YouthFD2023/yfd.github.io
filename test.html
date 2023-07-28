@@ -1,63 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Play YouTube Video</title>
+  <title>Horizontal Scrollable Div Example</title>
+  <style>
+    /* Set a fixed width for the horizontal scrollable div */
+    .horizontal-scrollable-div {
+      width: 300px; /* Adjust the width as needed */
+      overflow-x: auto; /* or overflow-x: scroll; */
+      white-space: nowrap; /* This prevents the content from wrapping */
+      border: 1px solid #ccc; /* Optional: Add a border for visual clarity */
+    }
+
+    /* Optional: Add some padding to the horizontal scrollable div */
+    .scrollable-content {
+      padding: 10px;
+    }
+
+    /* Optional: Add some styles to the horizontal scrollable content */
+    .scrollable-content p {
+      display: inline-block; /* This prevents the paragraphs from stacking vertically */
+      margin: 0 10px; /* Optional: Add some spacing between the paragraphs */
+    }
+  </style>
 </head>
 <body>
-    <button onclick="playVideo()">Play Video</button>
-    <div id="player" style="display: none;"></div>
-
-    <script src="https://www.youtube.com/iframe_api"></script>
+  <div class="horizontal-scrollable-div">
+    <div class="scrollable-content">
+      <!-- Add more content here to see the horizontal scrollbar when the content exceeds the div's width -->
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+      <p>Paragraph 3</p>
+      <p>Paragraph 4</p>
+      <p>Paragraph 5</p>
+      <p>Paragraph 6</p>
+      <p>Paragraph 7</p>
+      <p>Paragraph 8</p>
+      <p>Paragraph 9</p>
+      <p>Paragraph 10</p>
+    </div>
+  </div>
 </body>
 </html>
-<script>
-
-var player;
-
-// Load the YouTube IFrame API asynchronously
-function loadYouTubeAPI() {
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-}
-
-// Function to create and load the YouTube player
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        height: '360',
-        width: '640',
-        videoId: 'arfOYk0kjXE', // Replace with your YouTube video ID
-        playerVars: {
-            autoplay: 0, // Set to 1 for autoplay
-            controls: 1, // Show video controls
-            modestbranding: 1, // Hide YouTube logo
-            rel: 0, // Hide related videos at the end
-            showinfo: 0 // Hide video title and uploader information
-        },
-        events: {
-            'onReady': onPlayerReady
-        }
-    });
-}
-
-// Function to play the YouTube video
-function playVideo() {
-    if (player) {
-        player.playVideo();
-        document.getElementById("player").style.display = "none";
-    } else {
-        // If the YouTube IFrame API is not loaded, load it and then play the video
-        loadYouTubeAPI();
-        setTimeout(playVideo, 1000);
-    }
-}
-
-// Function to handle when the YouTube player is ready
-function onPlayerReady(event) {
-    // You can do additional handling here if needed
-    // For example, you can set up event listeners or other functionalities
-}
-
-
-</script>

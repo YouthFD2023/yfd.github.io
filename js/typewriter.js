@@ -2,9 +2,7 @@
 var player;
 // Set up text to print, each item in the array is a new line
 var aText = [
-    "Although the time spent was short, whats matters to us is the wonderful memmories created by everyone!!",
-    "",
-    "Thankyou Trainers for putting in so much effort!!"
+    "A day that all of us will never forget!"
 ];
 var iSpeed = 35; // Time delay of print out
 var iIndex = 0; // Start printing array at this position
